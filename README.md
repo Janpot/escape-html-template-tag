@@ -64,3 +64,28 @@ const navigation = escapeHtml`
 //   <a href="https://www.google.com">Google</a>
 // </div>
 ```
+
+### Compose templates easily with functions
+
+```js
+const html = require('escape-html-template-tag')
+
+const anchor = (text, href) => html`<a href="${href}">${text}</a>`
+
+const list = items => html`
+  <ul>
+    ${items.map(item => html`<li>${item}</li>`)}
+  </ul>
+`
+
+const navigation = list(
+  anchor('Home', '/home'),
+  anchor('About', '/about'),
+  anchor('Blog', '/blog')
+);
+// <ul>
+//   <li><a href="&#x2F;home">Home</a></li>
+//   <li><a href="&#x2F;about">About</a></li>
+//   <li><a href="&#x2F;blog">Blog</a></li>
+// </ul>
+```

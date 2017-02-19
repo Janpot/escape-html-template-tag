@@ -29,4 +29,3 @@ assert.strictEqual(String(escapeHtml`${escapeHtml.safe('<a>')}`), '<a>')
 assert.strictEqual(String(escapeHtml`${escapeHtml.safe(1)}`), '1')
 assert.strictEqual(String(escapeHtml`${escapeHtml.safe([1, 2, 3])}`), '1,2,3')
 assert.strictEqual(String(escapeHtml`${escapeHtml.safe(escapeHtml`<a>`)}`), '<a>')
-
