@@ -1,0 +1,28 @@
+{
+  "name": "escape-html-template-tag",
+  "version": "1.0.0",
+  "description": "Tag literal strings with this function to html escape interpolated values",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janpot/escape-html-template-tag.git"
+  },
+  "keywords": [
+    "template",
+    "tag",
+    "escape",
+    "html"
+  ],
+  "author": "Jan Potoms",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janpot/escape-html-template-tag/issues"
+  },
+  "homepage": "https://github.com/janpot/escape-html-template-tag#readme",
+  "devDependencies": {
+    "standard": "^8.6.0"
+  }
+}
