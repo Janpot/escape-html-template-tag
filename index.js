@@ -11,6 +11,20 @@ const ENTITIES = {
 
 const ENT_REGEX = new RegExp(Object.keys(ENTITIES).join('|'), 'g')
 
+function join (array, separator) {
+  if (separator === undefined || separator === null) {
+    separator = ','
+  }
+  if (array.length <= 0) {
+    return new HtmlSafeString([ '' ], [])
+  }
+  return new HtmlSafeString([ '', ...Array(array.length - 1).fill(separator), '' ], array)
+}
+
+function safe (value) {
+  return new HtmlSafeString([String(value)], [])
+}
+
 class HtmlSafeString {
   constructor (parts, subs) {
     this._parts = parts
@@ -22,7 +36,7 @@ class HtmlSafeString {
       return unsafe
     }
     if (Array.isArray(unsafe)) {
-      return new HtmlSafeString(Array(unsafe.length + 1).fill(''), unsafe)
+      return join(unsafe, '')
     }
     return String(unsafe).replace(ENT_REGEX, char => ENTITIES[char])
   }
@@ -43,8 +57,6 @@ function escapeHtml (parts, ...subs) {
   return new HtmlSafeString(parts, subs)
 }
 
-escapeHtml.safe = function (value) {
-  return new HtmlSafeString([String(value)], [])
-}
+Object.assign(escapeHtml, { safe, join })
 
 module.exports = escapeHtml

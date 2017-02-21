@@ -56,12 +56,28 @@ If you have html strings that already contain markup you can prevent it from bei
 ```js
 const trustedString = '<a href="https://www.google.com">Google</a>'
 const navigation = escapeHtml`
-<div>
-  ${escapeHtml.safe(trustedString)}
-</div>
+  <div>
+    ${escapeHtml.safe(trustedString)}
+  </div>
 `
 // <div>
 //   <a href="https://www.google.com">Google</a>
+// </div>
+```
+
+### Join fragments together with `escapeHtml.join`
+
+```js
+const navigation = escapeHtml`
+  <div>
+    ${escapeHtml.join(
+      ['home', 'about', 'blog'].map(page => escapeHtml`<a href="/${page}">${page}</div>a>`),
+      ' | '
+    )}
+  </div>
+`
+// <div>
+//   <a href="/home">home</div>a> | <a href="/about">about</div>a> | <a href="/blog">blog</div>a>
 // </div>
 ```
 
