@@ -16,9 +16,9 @@ function join (array, separator) {
     separator = ','
   }
   if (array.length <= 0) {
-    return new HtmlSafeString([ '' ], [])
+    return new HtmlSafeString([''], [])
   }
-  return new HtmlSafeString([ '', ...Array(array.length - 1).fill(separator), '' ], array)
+  return new HtmlSafeString(['', ...Array(array.length - 1).fill(separator), ''], array)
 }
 
 function safe (value) {

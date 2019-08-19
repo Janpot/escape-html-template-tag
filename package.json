@@ -16,6 +16,10 @@
     "escape",
     "html"
   ],
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "author": "Jan Potoms",
   "license": "MIT",
   "bugs": {
@@ -23,6 +27,6 @@
   },
   "homepage": "https://github.com/janpot/escape-html-template-tag#readme",
   "devDependencies": {
-    "standard": "^8.6.0"
+    "standard": "13.1.0"
   }
 }
