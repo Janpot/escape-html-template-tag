@@ -16,6 +16,10 @@
     "escape",
     "html"
   ],
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "author": "Jan Potoms",
   "license": "MIT",
   "bugs": {
