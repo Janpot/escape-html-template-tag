@@ -1,10 +1,10 @@
-interface Stringifable {
+interface Stringifyable {
     toString(): string
 }
 
-interface HtmlSafeString extends Stringifable {}
+interface HtmlSafeString extends Stringifyable {}
 
-type StringLike = Stringifable | string
+type StringLike = Stringifyable | string
 
 export function safe(value: StringLike): HtmlSafeString
 
