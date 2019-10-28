@@ -11,7 +11,7 @@ const ENTITIES = {
 
 const ENT_REGEX = new RegExp(Object.keys(ENTITIES).join('|'), 'g')
 
-function join (array, separator) {
+export function join (array, separator) {
   if (separator === undefined || separator === null) {
     separator = ','
   }
@@ -21,7 +21,7 @@ function join (array, separator) {
   return new HtmlSafeString(['', ...Array(array.length - 1).fill(separator), ''], array)
 }
 
-function safe (value) {
+export function safe (value) {
   return new HtmlSafeString([String(value)], [])
 }
 
@@ -53,10 +53,6 @@ class HtmlSafeString {
   }
 }
 
-function escapeHtml (parts, ...subs) {
+export default function escapeHtml (parts, ...subs) {
   return new HtmlSafeString(parts, subs)
 }
-
-Object.assign(escapeHtml, { safe, join })
-
-module.exports = escapeHtml

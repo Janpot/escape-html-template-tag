@@ -3,8 +3,10 @@
   "version": "1.1.2",
   "description": "Tag literal strings with this function to html escape interpolated values",
   "main": "index.js",
+  "module": "index.mjs",
   "scripts": {
-    "test": "standard && node test"
+    "test": "standard && node test",
+    "prepublish": "rollup index.mjs --file index.js --format cjs --exports named --no-esModule --footer 'module.exports = Object.assign(exports.default, exports);'"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   ],
   "files": [
     "index.js",
+    "index.mjs",
     "index.d.ts"
   ],
   "author": "Jan Potoms",
@@ -27,6 +30,7 @@
   },
   "homepage": "https://github.com/janpot/escape-html-template-tag#readme",
   "devDependencies": {
+    "rollup": "1.26.0",
     "standard": "13.1.0"
   }
 }
