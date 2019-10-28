@@ -31,6 +31,6 @@
   "homepage": "https://github.com/janpot/escape-html-template-tag#readme",
   "devDependencies": {
     "rollup": "1.26.0",
-    "standard": "13.1.0"
+    "standard": "14.3.1"
   }
 }
