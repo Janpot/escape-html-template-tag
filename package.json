@@ -6,7 +6,7 @@
   "module": "index.mjs",
   "scripts": {
     "test": "standard && node test",
-    "prepublish": "rollup index.mjs --file index.js --format cjs --exports named --footer 'module.exports = Object.assign(exports.default, exports);'"
+    "prepublish": "rollup index.mjs --file index.js --format cjs --exports named --no-esModule --footer 'module.exports = Object.assign(exports.default, exports);'"
   },
   "repository": {
     "type": "git",
