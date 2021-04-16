@@ -26,12 +26,14 @@ export function safe (value) {
 }
 
 class HtmlSafeString {
-  constructor (parts, subs) {
+  private _parts: string[]
+  private _subs: unknown[]
+  constructor (parts: string[], subs: unknown[]) {
     this._parts = parts
     this._subs = subs
   }
 
-  _escapeHtml (unsafe) {
+  private _escapeHtml (unsafe) {
     if (unsafe instanceof HtmlSafeString) {
       return unsafe
     }

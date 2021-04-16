@@ -1,5 +1,5 @@
 const assert = require('assert')
-const H = require('.')
+const H = require('..')
 
 assert.strictEqual(String(H`<a>`), '<a>')
 assert.strictEqual(String(H`${'<a>'}`), '&lt;a&gt;')
@@ -24,7 +24,7 @@ assert.strictEqual(String(H`${['a', 1, '<']}`), 'a1&lt;')
 assert.strictEqual(String(H`${['a', H`<`]}`), 'a<')
 assert.strictEqual(String(H`${[]}`), '')
 
-// H.safe
+// safe
 assert.strictEqual(String(H`${H.safe('<a>')}`), '<a>')
 assert.strictEqual(String(H`${H.safe(1)}`), '1')
 assert.strictEqual(String(H`${H.safe([1, 2, 3])}`), '1,2,3')

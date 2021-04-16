@@ -3,3 +3,5 @@ index.js
 
 # Dependency directories
 node_modules/
+
+dist
