@@ -1,6 +1,6 @@
 {
   "name": "escape-html-template-tag",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Tag literal strings with this function to html escape interpolated values",
   "source": "src/index.ts",
   "main": "dist/index.js",
