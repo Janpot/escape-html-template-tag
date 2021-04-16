@@ -4,13 +4,13 @@
   "description": "Tag literal strings with this function to html escape interpolated values",
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "exports": "./dist/index.modern.js",
+  "exports": "./dist/index.modern.mjs",
   "module": "dist/index.module.mjs",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "standard && node test/index.test.js",
-    "prepublish": "rm -rf dist && microbundle --no-compress -f cjs,umd src/index.cjs.ts && microbundle -f es,modern src/index.ts"
+    "prepublish": "rm -rf dist && microbundle --no-compress -f cjs,umd src/index.cjs.ts && microbundle -f es,modern src/index.ts && mv dist/index.modern.js dist/index.modern.mjs && mv dist/index.modern.js.map dist/index.modern.mjs.map"
   },
   "repository": {
     "type": "git",
