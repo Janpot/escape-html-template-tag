@@ -1,4 +1,6 @@
-const ENTITIES = {
+const ENTITIES: {
+  [key: string]: string
+} = {
   '&': '&amp;',
   '<': '&lt;',
   '>': '&gt;',
@@ -9,9 +11,11 @@ const ENTITIES = {
   '=': '&#x3D;'
 }
 
+const inspect = Symbol.for('nodejs.util.inspect.custom');
+
 const ENT_REGEX = new RegExp(Object.keys(ENTITIES).join('|'), 'g')
 
-export function join (array, separator) {
+export function join (array: (string | HtmlSafeString)[], separator: string | HtmlSafeString) {
   if (separator === undefined || separator === null) {
     separator = ','
   }
@@ -21,40 +25,40 @@ export function join (array, separator) {
   return new HtmlSafeString(['', ...Array(array.length - 1).fill(separator), ''], array)
 }
 
-export function safe (value) {
+export function safe (value: unknown) {
   return new HtmlSafeString([String(value)], [])
 }
 
-class HtmlSafeString {
-  private _parts: string[]
-  private _subs: unknown[]
-  constructor (parts: string[], subs: unknown[]) {
+function escapehtml (unsafe: unknown): string {
+  if (unsafe instanceof HtmlSafeString) {
+    return unsafe.toString()
+  }
+  if (Array.isArray(unsafe)) {
+    return join(unsafe, '').toString()
+  }
+  return String(unsafe).replace(ENT_REGEX, (char) => ENTITIES[char])
+}
+
+export class HtmlSafeString {
+  private _parts: readonly string[]
+  private _subs: readonly unknown[]
+  constructor (parts: readonly string[], subs: readonly unknown[]) {
     this._parts = parts
     this._subs = subs
   }
 
-  private _escapeHtml (unsafe) {
-    if (unsafe instanceof HtmlSafeString) {
-      return unsafe
-    }
-    if (Array.isArray(unsafe)) {
-      return join(unsafe, '')
-    }
-    return String(unsafe).replace(ENT_REGEX, char => ENTITIES[char])
-  }
-
-  toString () {
+  toString (): string {
     return this._parts.reduce((result, part, i) => {
       const sub = this._subs[i - 1]
-      return result + this._escapeHtml(sub) + part
+      return result + escapehtml(sub) + part
     })
   }
 
-  inspect () {
-    return `${this.constructor.name} '${this.toString()}'`
+  [inspect] () {
+    return `HtmlSafeString '${this.toString()}'`
   }
 }
 
-export default function escapeHtml (parts, ...subs) {
+export default function escapeHtml (parts: TemplateStringsArray, ...subs: unknown[]) {
   return new HtmlSafeString(parts, subs)
 }

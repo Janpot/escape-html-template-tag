@@ -12,8 +12,8 @@
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "standard && node test/index.test.js",
-    "prepublish": "rm -rf dist && microbundle -f cjs,umd src/index.cjs.ts && microbundle -f es,modern src/index.ts && mv dist/index.modern.js dist/index.modern.mjs && mv dist/index.modern.js.map dist/index.modern.mjs.map"
+    "test": "tsc --noEmit --strict src/* && standard && node test/index.test.js",
+    "prepublish": "rm -rf dist && microbundle --no-compress -f cjs,umd src/index.cjs.ts && microbundle --no-compress -f es,modern src/index.ts && mv dist/index.modern.js dist/index.modern.mjs && mv dist/index.modern.js.map dist/index.modern.mjs.map"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,8 @@
   "homepage": "https://github.com/janpot/escape-html-template-tag#readme",
   "devDependencies": {
     "microbundle": "^0.13.0",
-    "standard": "14.3.1"
+    "standard": "14.3.1",
+    "typescript": "^4.2.4"
   },
   "standard": {
     "ignore": [
