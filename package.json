@@ -13,7 +13,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "tsc --noEmit --strict src/* && standard && node test/index.test.js",
-    "prepublish": "rm -rf dist && microbundle --no-compress -f cjs,umd src/index.cjs.ts && microbundle --no-compress -f es,modern src/index.ts && mv dist/index.modern.js dist/index.modern.mjs && mv dist/index.modern.js.map dist/index.modern.mjs.map"
+    "build": "rm -rf dist && microbundle --no-compress -f cjs,umd src/index.cjs.ts && microbundle --no-compress -f es,modern src/index.ts && mv dist/index.modern.js dist/index.modern.mjs && mv dist/index.modern.js.map dist/index.modern.mjs.map",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
