@@ -6,7 +6,8 @@
   "main": "dist/index.js",
   "exports": {
     "require": "./dist/index.js",
-    "default": "./dist/index.modern.mjs"
+    "default": "./dist/index.modern.mjs",
+    "types": "./dist/index.d.ts"
   },
   "module": "dist/index.module.mjs",
   "unpkg": "dist/index.umd.js",
