@@ -91,7 +91,7 @@ import html from 'escape-html-template-tag'
 
 const anchor = (text, href) => html`<a href="${href}">${text}</a>`
 
-const list = items => html`
+const list = (...items) => html`
   <ul>
     ${items.map(item => html`<li>${item}</li>`)}
   </ul>
