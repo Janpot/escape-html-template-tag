@@ -13,11 +13,5 @@ export default defineConfig([
     format: 'cjs',
     dts: true,
     clean: false
-  },
-  {
-    entry: { index: 'src/index.cjs.ts' },
-    format: 'umd',
-    globalName: 'escapeHtmlTemplateTag',
-    clean: false
   }
 ])
