@@ -12,3 +12,9 @@
 ## 2.1.0
 
 - improve types
+
+## Unreleased
+
+- Build with tsdown instead of microbundle, ship separate `.d.mts`/`.d.cts` types (fixes #15)
+- Switch to pnpm
+- Remove runtime dependency on `caniuse-lite`
