@@ -17,5 +17,4 @@
 
 - Build with tsdown instead of microbundle, ship separate `.d.mts`/`.d.cts` types (fixes #15)
 - Switch to pnpm
-- Drop the UMD build
 - Remove runtime dependency on `caniuse-lite`
