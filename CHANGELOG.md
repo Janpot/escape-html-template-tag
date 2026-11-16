@@ -13,7 +13,7 @@
 
 - improve types
 
-## Unreleased
+## 2.3.0
 
 - Build with tsdown instead of microbundle, ship separate `.d.mts`/`.d.cts` types (fixes #15)
 - Switch to pnpm
